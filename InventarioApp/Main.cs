@@ -25,11 +25,7 @@ namespace UI
 
         private void showbtn_Click(object sender, EventArgs e)
         {
-            foreach (Product item in products)
-            {
-                Gride.Rows.Add(item.toArray());
-               
-            }
+            updateTable(products);
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
@@ -37,7 +33,19 @@ namespace UI
             AddDlg dialog = new AddDlg();
             dialog.setProducts(products);
             dialog.setId(++id);
-            dialog.Visible = true;
+            dialog.DialogResult = DialogResult.OK;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Se ha agregado el producto correctamente");
+            }
+            updateTable(products);
+        }
+        private void updateTable(List<Product> p)
+        {
+            foreach (Product x in p)
+            {
+                Gride.Rows.Add(x.toArray());
+            }
         }
     }
 }
