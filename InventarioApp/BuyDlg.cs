@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace InventarioApp
+namespace UI
 {
-    public partial class Form1 : Form
+    public partial class BuyDlg : Form
     {
-        public Form1()
+        public BuyDlg()
         {
             InitializeComponent();
         }
