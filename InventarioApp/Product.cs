@@ -36,5 +36,9 @@ namespace PObject
             };
             return array;
         }
+        public string idpname()
+        {
+            return "ID: "+this.id.ToString() + "| Prod: " + this.name;
+        }
     }
 }

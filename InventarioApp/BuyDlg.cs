@@ -22,5 +22,21 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void BuyDlg_Shown(object sender, EventArgs e)
+        {
+            List<String> s = new List<String>();
+            s.Add("Seleccione un producto");
+            foreach (var x in products)
+            {
+                s.Add(x.idpname());
+            }
+            ProductCMB.DataSource = s;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

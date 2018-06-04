@@ -48,5 +48,17 @@ namespace UI
                 Gride.Rows.Add(x.toArray());
             }
         }
+
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            BuyDlg dialog = new BuyDlg();
+            dialog.setProducts(products);
+            dialog.DialogResult = DialogResult.OK;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Se ha agregado el producto correctamente");
+            }
+            updateTable(products);
+        }
     }
 }
