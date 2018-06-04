@@ -42,6 +42,7 @@ namespace UI
         }
         private void updateTable(List<Product> p)
         {
+            Gride.Rows.Clear();
             foreach (Product x in p)
             {
                 Gride.Rows.Add(x.toArray());

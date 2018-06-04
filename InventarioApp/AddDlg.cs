@@ -36,6 +36,18 @@ namespace UI
 
         private void OKbtn_Click(object sender, EventArgs e)
         {
+            //validation
+            foreach(Control x in LabelPanel.Controls)
+            {
+                TextBox tmp = x as TextBox;
+                if(tmp != null)
+                {
+                    if (tmp.Text=="")
+                    {
+                        return;
+                    }
+                }
+            }
             Product nuevo = new Product(id, NameTxt.Text, Int16.Parse(qtyTxt.Text), Int16.Parse(priceTxt.Text),
                 (Product.TYPE)Enum.Parse(typeof(Product.TYPE), EnumCMB.SelectedItem.ToString()));
             products.Add(nuevo);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PObject;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,11 @@ namespace UI
 {
     public partial class BuyDlg : Form
     {
+        private List<Product> products;
+        public void setProducts(List<Product> t)
+        {
+            products = t;
+        }
         public BuyDlg()
         {
             InitializeComponent();
