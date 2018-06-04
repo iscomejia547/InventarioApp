@@ -38,5 +38,41 @@ namespace UI
         {
 
         }
+        
+        private void okBtn_Click(object sender, EventArgs e)
+        {
+            if (ProductCMB.SelectedIndex == 0)
+            {
+                return;
+            }
+            foreach (Control item in FieldPanel.Controls)
+            {
+                TextBox txt = item as TextBox;
+                if (txt != null)
+                {
+                    if (txt.Text == "")
+                    {
+                        return;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+            products.Sort();
+            var prod = (from it in products where it.id == (ProductCMB.SelectedIndex - 1) select it).ToArray();
+            Product p = prod[0] as Product;
+            if (p != null)
+            {
+                p.qty += Int32.Parse(qtytxt.Text);
+                p.price = (p.price + float.Parse(pricetxt.Text)) / 2;
+            }
+            products.RemoveAt(p.id);
+            products.Insert(p.id, p);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+            
+        }
     }
 }

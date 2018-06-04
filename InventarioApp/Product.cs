@@ -6,19 +6,23 @@ using System.Threading.Tasks;
 
 namespace PObject
 {
-    public class Product
+    public class Product : IComparable<Product>
     {
-        private int id { get; set; }
-        private string name { get; set; }
-        private int qty { get; set; }
-        private int price { get; set; }
-        private TYPE type { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public int qty { get; set; }
+        public float price { get; set; }
+        public TYPE type { get; set; }
 
         public enum TYPE
         {
             Food, Cleaning, Personal_Hygiene, Drinks
         }
-        public Product(int id, string name, int qty, int price, TYPE type)
+        public Product()
+        {
+
+        }
+        public Product(int id, string name, int qty, float price, TYPE type)
         {
             this.id = id;
             this.name = name;
@@ -39,6 +43,15 @@ namespace PObject
         public string idpname()
         {
             return "ID: "+this.id.ToString() + "| Prod: " + this.name;
+        }
+
+        public int CompareTo(Product other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+            return this.id.CompareTo(other.id);
         }
     }
 }

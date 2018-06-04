@@ -48,7 +48,7 @@ namespace UI
                     }
                 }
             }
-            Product nuevo = new Product(id, NameTxt.Text, Int16.Parse(qtyTxt.Text), Int16.Parse(priceTxt.Text),
+            Product nuevo = new Product(id, NameTxt.Text, Int16.Parse(qtyTxt.Text), float.Parse(priceTxt.Text),
                 (Product.TYPE)Enum.Parse(typeof(Product.TYPE), EnumCMB.SelectedItem.ToString()));
             products.Add(nuevo);
             this.Close(); 

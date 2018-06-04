@@ -32,9 +32,9 @@
             this.ProductCMB = new System.Windows.Forms.ComboBox();
             this.AddBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.qtytxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pricetxt = new System.Windows.Forms.TextBox();
             this.okBtn = new System.Windows.Forms.Button();
             this.FieldPanel = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
@@ -78,14 +78,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Cantidad";
             // 
-            // textBox1
+            // qtytxt
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(13, 9);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(140, 26);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.qtytxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.qtytxt.Location = new System.Drawing.Point(13, 9);
+            this.qtytxt.Name = "qtytxt";
+            this.qtytxt.Size = new System.Drawing.Size(140, 26);
+            this.qtytxt.TabIndex = 2;
+            this.qtytxt.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // label2
             // 
@@ -97,13 +97,13 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Precio";
             // 
-            // textBox2
+            // pricetxt
             // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(13, 65);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(140, 26);
-            this.textBox2.TabIndex = 4;
+            this.pricetxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pricetxt.Location = new System.Drawing.Point(13, 65);
+            this.pricetxt.Name = "pricetxt";
+            this.pricetxt.Size = new System.Drawing.Size(140, 26);
+            this.pricetxt.TabIndex = 4;
             // 
             // okBtn
             // 
@@ -113,11 +113,12 @@
             this.okBtn.TabIndex = 5;
             this.okBtn.Text = "OK";
             this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
             // 
             // FieldPanel
             // 
-            this.FieldPanel.Controls.Add(this.textBox1);
-            this.FieldPanel.Controls.Add(this.textBox2);
+            this.FieldPanel.Controls.Add(this.qtytxt);
+            this.FieldPanel.Controls.Add(this.pricetxt);
             this.FieldPanel.Location = new System.Drawing.Point(182, 109);
             this.FieldPanel.Name = "FieldPanel";
             this.FieldPanel.Size = new System.Drawing.Size(200, 100);
@@ -155,9 +156,9 @@
         private System.Windows.Forms.ComboBox ProductCMB;
         private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox qtytxt;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox pricetxt;
         private System.Windows.Forms.Button okBtn;
         private System.Windows.Forms.Panel FieldPanel;
     }

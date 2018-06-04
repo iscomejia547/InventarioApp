@@ -56,7 +56,7 @@ namespace UI
             dialog.DialogResult = DialogResult.OK;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                MessageBox.Show("Se ha agregado el producto correctamente");
+                MessageBox.Show("Se ha agregado la compra correctamente");
             }
             updateTable(products);
         }
