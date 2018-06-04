@@ -14,9 +14,9 @@ namespace UI
 {
     public partial class AddDlg : Form
     {
-        private List<Product> products { get; set; }
+        private Dictionary<int,Product> products { get; set; }
         private int id { get; set; }
-        public void setProducts(List<Product> p)
+        public void setProducts(Dictionary<int, Product> p)
         {
             products = p;
         }
@@ -50,7 +50,7 @@ namespace UI
             }
             Product nuevo = new Product(id, NameTxt.Text, Int16.Parse(qtyTxt.Text), float.Parse(priceTxt.Text),
                 (Product.TYPE)Enum.Parse(typeof(Product.TYPE), EnumCMB.SelectedItem.ToString()));
-            products.Add(nuevo);
+            products.Add(nuevo.id, nuevo);
             this.Close(); 
         }
     }

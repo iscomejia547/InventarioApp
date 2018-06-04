@@ -14,13 +14,13 @@ namespace UI
     public partial class Main : Form
     {
         private int id;
-        private List<Product> products; 
+        private Dictionary<int, Product> products; 
         public Main()
         {
             InitializeComponent();
             id = 0;
-            products = new List<Product>();
-            products.Add(new Product(0, "Leche Lala", 5, 18, Product.TYPE.Food));
+            products = new Dictionary<int, Product>();
+            products.Add(0, new Product(0, "Leche Lala", 5, 18, Product.TYPE.Food));
         }
 
         private void showbtn_Click(object sender, EventArgs e)
@@ -40,12 +40,12 @@ namespace UI
             }
             updateTable(products);
         }
-        private void updateTable(List<Product> p)
+        private void updateTable(Dictionary<int, Product> p)
         {
             Gride.Rows.Clear();
-            foreach (Product x in p)
+            foreach (KeyValuePair<int, Product> x in p)
             {
-                Gride.Rows.Add(x.toArray());
+                Gride.Rows.Add(x.Value.toArray());
             }
         }
 

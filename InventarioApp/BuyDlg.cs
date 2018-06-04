@@ -13,8 +13,8 @@ namespace UI
 {
     public partial class BuyDlg : Form
     {
-        private List<Product> products;
-        public void setProducts(List<Product> t)
+        private Dictionary<int, Product> products;
+        public void setProducts(Dictionary<int, Product> t)
         {
             products = t;
         }
@@ -27,9 +27,9 @@ namespace UI
         {
             List<String> s = new List<String>();
             s.Add("Seleccione un producto");
-            foreach (var x in products)
+            foreach (KeyValuePair<int, Product> x in products)
             {
-                s.Add(x.idpname());
+                s.Add(x.Value.idpname());
             }
             ProductCMB.DataSource = s;
         }
@@ -60,16 +60,15 @@ namespace UI
                     break;
                 }
             }
-            products.Sort();
-            var prod = (from it in products where it.id == (ProductCMB.SelectedIndex - 1) select it).ToArray();
-            Product p = prod[0] as Product;
+            var prod = (from it in products where it.Value.id == (ProductCMB.SelectedIndex - 1) select it).ToArray();
+            Product p = prod[0].Value as Product;
             if (p != null)
             {
                 p.qty += Int32.Parse(qtytxt.Text);
                 p.price = (p.price + float.Parse(pricetxt.Text)) / 2;
             }
-            products.RemoveAt(p.id);
-            products.Insert(p.id, p);
+            products.Remove(p.id);
+            products.Add(p.id, p);
             this.DialogResult = DialogResult.OK;
             this.Close();
             
