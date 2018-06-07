@@ -1,4 +1,4 @@
-﻿namespace UI
+﻿namespace InventarioApp.UI
 {
     partial class Main
     {
@@ -34,6 +34,7 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.agregarVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.showbtn = new System.Windows.Forms.Button();
@@ -43,11 +44,13 @@
             this.Qtycol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.BuySellPopupMN = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.añadirCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.añadirVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Gride)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
+            this.BuySellPopupMN.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -66,7 +69,8 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
             this.toolStripMenuItem3,
-            this.toolStripMenuItem4});
+            this.toolStripMenuItem4,
+            this.agregarVentaToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 20);
             this.toolStripMenuItem1.Text = "Agregar o modificar";
@@ -74,22 +78,28 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem2.Text = "Agregar producto";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem3.Text = "Agregar compra";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(173, 22);
             this.toolStripMenuItem4.Text = "Remover Producto";
+            // 
+            // agregarVentaToolStripMenuItem
+            // 
+            this.agregarVentaToolStripMenuItem.Name = "agregarVentaToolStripMenuItem";
+            this.agregarVentaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.agregarVentaToolStripMenuItem.Text = "Agregar venta";
             // 
             // opcionesToolStripMenuItem
             // 
@@ -170,9 +180,25 @@
             this.TypeCol.Name = "TypeCol";
             this.TypeCol.ReadOnly = true;
             // 
-            // productBindingSource
+            // BuySellPopupMN
             // 
-            this.productBindingSource.DataSource = typeof(PObject.Product);
+            this.BuySellPopupMN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.añadirCompraToolStripMenuItem,
+            this.añadirVentaToolStripMenuItem});
+            this.BuySellPopupMN.Name = "BuySellPopupMN";
+            this.BuySellPopupMN.Size = new System.Drawing.Size(165, 48);
+            // 
+            // añadirCompraToolStripMenuItem
+            // 
+            this.añadirCompraToolStripMenuItem.Name = "añadirCompraToolStripMenuItem";
+            this.añadirCompraToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.añadirCompraToolStripMenuItem.Text = "Registrar compra";
+            // 
+            // añadirVentaToolStripMenuItem
+            // 
+            this.añadirVentaToolStripMenuItem.Name = "añadirVentaToolStripMenuItem";
+            this.añadirVentaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
+            this.añadirVentaToolStripMenuItem.Text = "Registrar venta";
             // 
             // Main
             // 
@@ -189,7 +215,7 @@
             this.menuStrip1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Gride)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
+            this.BuySellPopupMN.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -206,12 +232,15 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button showbtn;
         private System.Windows.Forms.DataGridView Gride;
-        private System.Windows.Forms.BindingSource productBindingSource;
         private System.Windows.Forms.DataGridViewTextBoxColumn IDCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn NameCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn Qtycol;
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeCol;
+        private System.Windows.Forms.ToolStripMenuItem agregarVentaToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip BuySellPopupMN;
+        private System.Windows.Forms.ToolStripMenuItem añadirCompraToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem añadirVentaToolStripMenuItem;
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventarioApp.POBject;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,9 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using PObject;
 
-namespace UI
+namespace InventarioApp.UI
 {
     public partial class AddDlg : Form
     {
@@ -44,6 +44,7 @@ namespace UI
                 {
                     if (tmp.Text=="")
                     {
+                        MessageBox.Show("Rellene todos los campos!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }

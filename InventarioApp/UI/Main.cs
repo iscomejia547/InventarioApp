@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InventarioApp.POBject;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,9 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PObject;
 
-namespace UI
+
+namespace InventarioApp.UI
 {
     public partial class Main : Form
     {
@@ -33,7 +34,6 @@ namespace UI
             AddDlg dialog = new AddDlg();
             dialog.setProducts(products);
             dialog.setId(++id);
-            dialog.DialogResult = DialogResult.OK;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Se ha agregado el producto correctamente");
@@ -53,7 +53,7 @@ namespace UI
         {
             BuyDlg dialog = new BuyDlg();
             dialog.setProducts(products);
-            dialog.DialogResult = DialogResult.OK;
+            dialog.isBuy = true;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Se ha agregado la compra correctamente");

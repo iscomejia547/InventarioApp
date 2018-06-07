@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PObject
+namespace InventarioApp.POBject
 {
     public class Product : IComparable<Product>
     {

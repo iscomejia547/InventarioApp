@@ -1,4 +1,4 @@
-﻿namespace UI
+﻿namespace InventarioApp.UI
 {
     partial class BuyDlg
     {

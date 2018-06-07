@@ -1,10 +1,10 @@
-﻿using System;
+﻿using InventarioApp.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using UI;
-using PObject;
+
 
 namespace InventarioApp
 {

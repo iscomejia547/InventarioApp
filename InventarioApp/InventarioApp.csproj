@@ -57,6 +57,7 @@
     <Compile Include="BuyDlg.Designer.cs">
       <DependentUpon>BuyDlg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Filer.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
