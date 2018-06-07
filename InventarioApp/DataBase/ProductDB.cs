@@ -39,8 +39,11 @@ namespace InventarioApp.DataBase
             putout.Write(nVarChar(t.name, 20));
             putout.Write(t.qty);
             putout.Write(t.price);
-            putout.Write(t.type);
-
+            putout.Write(t.getType());
+            putout.BaseStream.Seek(0, SeekOrigin.Begin);
+            putout.Write(++n);
+            putout.Write(++k);
+            return true;
         }
 
         public bool delete(Product t)
@@ -50,14 +53,56 @@ namespace InventarioApp.DataBase
 
         public Product QueryByID(int ID)
         {
-            throw new NotImplementedException();
+            putin.BaseStream.Seek(0, SeekOrigin.Begin);
+            int n = putin.ReadInt32();
+            if(ID>n || ID <= 0)
+            {
+                return null;
+            }
+            long pos = 8 + STREAM_SIZE * (ID - 1);
+            putin.BaseStream.Seek(pos, SeekOrigin.Begin);
+            p = new Product();
+            p.id = putin.ReadInt32();
+            p.name = putin.ReadString().Trim();
+            p.qty = putin.ReadInt32();
+            p.price = putin.ReadInt32();
+            p.setType(putin.ReadInt32());
+            return p;
         }
 
         public List<Product> readAll()
         {
-            throw new NotImplementedException();
-        }
+            products = new List<Product>();
 
+            putin.BaseStream.Seek(0, SeekOrigin.Begin);
+            int n = putin.ReadInt32();
+            int k = putin.ReadInt32();
+
+            for (int i = 1; i <= n; i++)
+            {
+                p = QueryByID(i);
+                if (p != null)
+                {
+                    products.Add(p);
+                }
+            }
+            return products;
+        }
+        public void close()
+        {
+            if (putin != null)
+            {
+                putin.Close();
+            }
+            if (putout != null)
+            {
+                putout.Close();
+            }
+            if (fs != null)
+            {
+                fs.Close();
+            }
+        }
         public bool update(Product t)
         {
             throw new NotImplementedException();

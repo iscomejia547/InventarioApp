@@ -45,35 +45,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddDlg.cs">
+    <Compile Include="DataBase\ProductDB.cs" />
+    <Compile Include="Data\DAO.cs" />
+    <Compile Include="Data\GeneralFiler.cs" />
+    <Compile Include="Data\ProductDAO.cs" />
+    <Compile Include="UI\AddDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddDlg.Designer.cs">
+    <Compile Include="UI\AddDlg.Designer.cs">
       <DependentUpon>AddDlg.cs</DependentUpon>
     </Compile>
-    <Compile Include="BuyDlg.cs">
+    <Compile Include="UI\BuyDlg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BuyDlg.Designer.cs">
+    <Compile Include="UI\BuyDlg.Designer.cs">
       <DependentUpon>BuyDlg.cs</DependentUpon>
     </Compile>
-    <Compile Include="Filer.cs" />
-    <Compile Include="Main.cs">
+    <Compile Include="UI\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="UI\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Product.cs" />
+    <Compile Include="PObject\Product.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddDlg.resx">
+    <EmbeddedResource Include="UI\AddDlg.resx">
       <DependentUpon>AddDlg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="BuyDlg.resx">
+    <EmbeddedResource Include="UI\BuyDlg.resx">
       <DependentUpon>BuyDlg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="UI\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
