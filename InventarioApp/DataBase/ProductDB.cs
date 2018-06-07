@@ -105,7 +105,20 @@ namespace InventarioApp.DataBase
         }
         public bool update(Product t)
         {
-            throw new NotImplementedException();
+            if (t == null)
+            {
+                return false;
+            }
+            int i = t.id;
+            long pos = 8 + STREAM_SIZE * (i - 1);
+            putout.BaseStream.Seek(pos, SeekOrigin.Begin);
+            putout.Write(t.id);
+            putout.Write(nVarChar( t.name, 20));
+            putout.Write(t.qty);
+            putout.Write(t.price);
+            putout.Write(t.getType());
+            putout.BaseStream.Seek(0, SeekOrigin.Begin);
+            return true;
         }
         private string nVarChar(string s, int n)
         {
@@ -124,12 +137,14 @@ namespace InventarioApp.DataBase
 
         List<Product> ProductDAO.QueryByCAT(Product.TYPE type)
         {
-            throw new NotImplementedException();
+            var cat = (from Product p in readAll() where p.type.Equals(type) select p).ToList();
+            return cat;
         }
 
         List<Product> ProductDAO.QueryByName(string name)
         {
-            throw new NotImplementedException();
+            var nam = (from Product p in readAll() where p.name.Equals(name) select p).ToList();
+            return nam;
         }
     }
 }
