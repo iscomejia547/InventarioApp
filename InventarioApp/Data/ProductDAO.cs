@@ -10,7 +10,7 @@ namespace InventarioApp.Data
     interface ProductDAO : DAO<Product>
     {
         Product QueryByID(int id);
-        Product QueryByName(string name);
-        Product QueryByCAT(Product.TYPE type);
+        List<Product> QueryByName(string name);
+        List<Product> QueryByCAT(Product.TYPE type);
     }
 }

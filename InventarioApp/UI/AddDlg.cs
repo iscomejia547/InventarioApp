@@ -50,7 +50,7 @@ namespace InventarioApp.UI
                 }
             }
             Product nuevo = new Product(id, NameTxt.Text, Int16.Parse(qtyTxt.Text), float.Parse(priceTxt.Text),
-                (Product.TYPE)Enum.Parse(typeof(Product.TYPE), EnumCMB.SelectedItem.ToString()));
+                EnumCMB.SelectedIndex);
             products.Add(nuevo.id, nuevo);
             this.Close(); 
         }
