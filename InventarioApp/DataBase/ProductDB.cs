@@ -77,6 +77,7 @@ namespace InventarioApp.DataBase
             putout.BaseStream.Seek(0, SeekOrigin.Begin);
             putout.Write(--n);
             putout.Write(k);
+            int i = 0;
             foreach(Product p in products)
             {
                 long pos = 8 + (i * STREAM_SIZE);
@@ -86,6 +87,7 @@ namespace InventarioApp.DataBase
                 putout.Write(t.qty);
                 putout.Write(t.price);
                 putout.Write(t.getType());
+                i++;
             }
             return true;
         }
