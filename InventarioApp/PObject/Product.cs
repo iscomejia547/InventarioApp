@@ -47,10 +47,10 @@ namespace InventarioApp.POBject
         {
             switch (this.type)
             {
-                case TYPE.Food:return 1;
-                case TYPE.Cleaning:return 2;
-                case TYPE.Personal_Hygiene: return 3;
-                case TYPE.Drinks: return 4;
+                case TYPE.Food:return 0;
+                case TYPE.Cleaning:return 1;
+                case TYPE.Personal_Hygiene: return 2;
+                case TYPE.Drinks: return 3;
                 default:throw new ArgumentException("No hay un argumento valido");
             }
         }

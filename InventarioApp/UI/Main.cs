@@ -1,4 +1,5 @@
-﻿using InventarioApp.POBject;
+﻿using InventarioApp.DataBase;
+using InventarioApp.POBject;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,51 +15,51 @@ namespace InventarioApp.UI
 {
     public partial class Main : Form
     {
-        private int id;
-        private Dictionary<int, Product> products; 
+        private ProductDB database;
+        
         public Main()
         {
             InitializeComponent();
-            id = 0;
-            products = new Dictionary<int, Product>();
-            products.Add(0, new Product(0, "Leche Lala", 5, 18, Product.TYPE.Food));
+            database = new ProductDB();
+            //database.create(new Product(0, "Leche Lala", 5, 18, 0));
         }
 
         private void showbtn_Click(object sender, EventArgs e)
         {
-            updateTable(products);
+            updateTable(database.readAll());
         }
 
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
             AddDlg dialog = new AddDlg();
-            dialog.setProducts(products);
-            dialog.setId(++id);
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                MessageBox.Show("Se ha agregado el producto correctamente");
-            }
-            updateTable(products);
+            dialog.setDB(database);
+            dialog.ShowDialog();
+            updateTable(database.readAll());
         }
-        private void updateTable(Dictionary<int, Product> p)
+        private void updateTable(List<Product> p)
         {
             Gride.Rows.Clear();
-            foreach (KeyValuePair<int, Product> x in p)
+            foreach (var item in p)
             {
-                Gride.Rows.Add(x.Value.toArray());
+                Gride.Rows.Add(item.toArray());
             }
         }
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            BuyDlg dialog = new BuyDlg();
+            /*BuyDlg dialog = new BuyDlg();
             dialog.setProducts(products);
             dialog.isBuy = true;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
                 MessageBox.Show("Se ha agregado la compra correctamente");
             }
-            updateTable(products);
+            updateTable(products);*/
+        }
+
+        private void Main_Shown(object sender, EventArgs e)
+        {
+            updateTable(database.readAll());
         }
     }
 }

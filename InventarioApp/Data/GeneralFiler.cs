@@ -11,7 +11,7 @@ namespace InventarioApp.Data
     class GeneralFiler
     {
         static FileStream fs;
-        static string PATH = Application.StartupPath+@"\\product.dat";
+        static string PATH = Application.StartupPath+@"\\product1.dat";
         public static FileStream getFS()
         {
             if (!File.Exists(PATH))

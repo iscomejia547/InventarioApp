@@ -1,4 +1,5 @@
-﻿using InventarioApp.POBject;
+﻿using InventarioApp.DataBase;
+using InventarioApp.POBject;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,15 +15,10 @@ namespace InventarioApp.UI
 {
     public partial class AddDlg : Form
     {
-        private Dictionary<int,Product> products { get; set; }
-        private int id { get; set; }
-        public void setProducts(Dictionary<int, Product> p)
+        private ProductDB db { get; set; }
+        public void setDB(ProductDB d)
         {
-            products = p;
-        }
-        public void setId(int idn)
-        {
-            id = idn;
+            db = d;
         }
         public AddDlg()
         {
@@ -49,9 +45,19 @@ namespace InventarioApp.UI
                     }
                 }
             }
-            Product nuevo = new Product(id, NameTxt.Text, Int16.Parse(qtyTxt.Text), float.Parse(priceTxt.Text),
+            Product nuevo = new Product(0, NameTxt.Text, Int16.Parse(qtyTxt.Text), float.Parse(priceTxt.Text),
                 EnumCMB.SelectedIndex);
-            products.Add(nuevo.id, nuevo);
+            if (db.create(nuevo))
+            {
+                MessageBox.Show("Se ha agregado correctamente");
+            }
+            else
+            {
+                MessageBox.Show("Ha habido un error\nNo deben haber nombres repetidos", "",
+                    MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+            }
+            DialogResult = DialogResult.OK;
             this.Close(); 
         }
     }

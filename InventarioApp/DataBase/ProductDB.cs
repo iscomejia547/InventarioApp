@@ -6,10 +6,11 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace InventarioApp.DataBase
 {
-    class ProductDB : ProductDAO
+    public class ProductDB : ProductDAO
     {
         private const int STREAM_SIZE = 59;
         private List<Product> products;
@@ -26,9 +27,14 @@ namespace InventarioApp.DataBase
         }
         public bool create(Product t)
         {
+            if (validate(t))
+            {
+                return false;
+            }
             putin.BaseStream.Seek(0, SeekOrigin.Begin);
             int n = putin.ReadInt32();
             int k = putin.ReadInt32();
+            t.id = k + 1;
             if(t.id <=k || t.id <= n)
             {
                 throw new ArgumentException("ID: " + t.id + " ya esta ocupado");
@@ -50,7 +56,17 @@ namespace InventarioApp.DataBase
         {
             throw new NotImplementedException();
         }
-
+        private bool validate(Product t)
+        {
+            /*debido a que es un inventario de productos, no pueden haber dos con exactamente
+            el mismo nombre*/
+            var temp = QueryByName(t.name);
+            if (temp == null)
+            {
+                return false;
+            }
+            return true;
+        }
         public Product QueryByID(int ID)
         {
             putin.BaseStream.Seek(0, SeekOrigin.Begin);
@@ -65,7 +81,8 @@ namespace InventarioApp.DataBase
             p.id = putin.ReadInt32();
             p.name = putin.ReadString().Trim();
             p.qty = putin.ReadInt32();
-            p.price = putin.ReadInt32();
+            p.price = putin.ReadSingle();
+            MessageBox.Show(p.price.ToString());
             p.setType(putin.ReadInt32());
             return p;
         }
@@ -76,7 +93,7 @@ namespace InventarioApp.DataBase
 
             putin.BaseStream.Seek(0, SeekOrigin.Begin);
             int n = putin.ReadInt32();
-            int k = putin.ReadInt32();
+            //id= putin.ReadInt32();
 
             for (int i = 1; i <= n; i++)
             {
@@ -135,16 +152,20 @@ namespace InventarioApp.DataBase
             return sb.ToString();
         }
 
-        List<Product> ProductDAO.QueryByCAT(Product.TYPE type)
+        public List<Product> QueryByCAT(Product.TYPE type)
         {
             var cat = (from Product p in readAll() where p.type.Equals(type) select p).ToList();
             return cat;
         }
 
-        List<Product> ProductDAO.QueryByName(string name)
+        public Product QueryByName(string name)
         {
-            var nam = (from Product p in readAll() where p.name.Equals(name) select p).ToList();
-            return nam;
+            var nam = (from Product p in readAll() where p.name.Equals(name) select p).ToArray();
+            if (nam.Length==0)
+            {
+                return null;
+            }
+            return nam[0];
         }
     }
 }
