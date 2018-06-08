@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,13 +43,9 @@
             this.Qtycol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TypeCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BuySellPopupMN = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.añadirCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.añadirVentaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Gride)).BeginInit();
-            this.BuySellPopupMN.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -69,8 +64,8 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItem2,
             this.toolStripMenuItem3,
-            this.toolStripMenuItem4,
-            this.agregarVentaToolStripMenuItem});
+            this.agregarVentaToolStripMenuItem,
+            this.toolStripMenuItem4});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(125, 20);
             this.toolStripMenuItem1.Text = "Agregar o modificar";
@@ -78,28 +73,29 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(173, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "Agregar producto";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(173, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem3.Text = "Agregar compra";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(173, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem4.Text = "Remover Producto";
             // 
             // agregarVentaToolStripMenuItem
             // 
             this.agregarVentaToolStripMenuItem.Name = "agregarVentaToolStripMenuItem";
-            this.agregarVentaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.agregarVentaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.agregarVentaToolStripMenuItem.Text = "Agregar venta";
+            this.agregarVentaToolStripMenuItem.Click += new System.EventHandler(this.agregarVentaToolStripMenuItem_Click);
             // 
             // opcionesToolStripMenuItem
             // 
@@ -180,26 +176,6 @@
             this.TypeCol.Name = "TypeCol";
             this.TypeCol.ReadOnly = true;
             // 
-            // BuySellPopupMN
-            // 
-            this.BuySellPopupMN.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.añadirCompraToolStripMenuItem,
-            this.añadirVentaToolStripMenuItem});
-            this.BuySellPopupMN.Name = "BuySellPopupMN";
-            this.BuySellPopupMN.Size = new System.Drawing.Size(165, 48);
-            // 
-            // añadirCompraToolStripMenuItem
-            // 
-            this.añadirCompraToolStripMenuItem.Name = "añadirCompraToolStripMenuItem";
-            this.añadirCompraToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.añadirCompraToolStripMenuItem.Text = "Registrar compra";
-            // 
-            // añadirVentaToolStripMenuItem
-            // 
-            this.añadirVentaToolStripMenuItem.Name = "añadirVentaToolStripMenuItem";
-            this.añadirVentaToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-            this.añadirVentaToolStripMenuItem.Text = "Registrar venta";
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -216,7 +192,6 @@
             this.menuStrip1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.Gride)).EndInit();
-            this.BuySellPopupMN.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,9 +214,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PriceCol;
         private System.Windows.Forms.DataGridViewTextBoxColumn TypeCol;
         private System.Windows.Forms.ToolStripMenuItem agregarVentaToolStripMenuItem;
-        private System.Windows.Forms.ContextMenuStrip BuySellPopupMN;
-        private System.Windows.Forms.ToolStripMenuItem añadirCompraToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem añadirVentaToolStripMenuItem;
     }
 }
 

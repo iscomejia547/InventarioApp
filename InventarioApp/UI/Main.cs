@@ -47,18 +47,24 @@ namespace InventarioApp.UI
 
         private void toolStripMenuItem3_Click(object sender, EventArgs e)
         {
-            /*BuyDlg dialog = new BuyDlg();
-            dialog.setProducts(products);
+            BuyDlg dialog = new BuyDlg();
+            dialog.setDB(database);
             dialog.isBuy = true;
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                MessageBox.Show("Se ha agregado la compra correctamente");
-            }
-            updateTable(products);*/
+            dialog.ShowDialog();
+            updateTable(database.readAll());
         }
 
         private void Main_Shown(object sender, EventArgs e)
         {
+            updateTable(database.readAll());
+        }
+
+        private void agregarVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BuyDlg dialog = new BuyDlg();
+            dialog.setDB(database);
+            dialog.isBuy = false;
+            dialog.ShowDialog();
             updateTable(database.readAll());
         }
     }

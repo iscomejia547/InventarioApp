@@ -30,7 +30,6 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.ProductCMB = new System.Windows.Forms.ComboBox();
-            this.AddBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.qtytxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,7 +43,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.ProductCMB);
-            this.panel1.Controls.Add(this.AddBtn);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(396, 89);
@@ -55,18 +53,8 @@
             this.ProductCMB.FormattingEnabled = true;
             this.ProductCMB.Location = new System.Drawing.Point(42, 37);
             this.ProductCMB.Name = "ProductCMB";
-            this.ProductCMB.Size = new System.Drawing.Size(160, 21);
+            this.ProductCMB.Size = new System.Drawing.Size(302, 21);
             this.ProductCMB.TabIndex = 2;
-            // 
-            // AddBtn
-            // 
-            this.AddBtn.AutoSize = true;
-            this.AddBtn.Location = new System.Drawing.Point(263, 35);
-            this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(92, 23);
-            this.AddBtn.TabIndex = 1;
-            this.AddBtn.Text = "Agregar compra";
-            this.AddBtn.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -142,7 +130,6 @@
             this.Text = "Añadir Compra";
             this.Shown += new System.EventHandler(this.BuyDlg_Shown);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.FieldPanel.ResumeLayout(false);
             this.FieldPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -154,7 +141,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox ProductCMB;
-        private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox qtytxt;
         private System.Windows.Forms.Label label2;

@@ -21,6 +21,10 @@ namespace InventarioApp.DataBase
 
         public ProductDB()
         {
+            streamCreator();
+        }
+        private void streamCreator()
+        {
             fs = GeneralFiler.getFS();
             putin = new BinaryReader(fs);
             putout = new BinaryWriter(fs);
@@ -54,7 +58,36 @@ namespace InventarioApp.DataBase
 
         public bool delete(Product t)
         {
-            throw new NotImplementedException();
+            if (t == null)
+            {
+                throw new ArgumentException("Objeto nulo");
+            }
+            products = readAll();
+            putin.BaseStream.Seek(0, SeekOrigin.Begin);
+            int n = putin.ReadInt32();
+            int k = putin.ReadInt32();
+            if (!products.Remove(t))
+            {
+                throw new ArgumentException("El objeto no existe");
+            }
+            //resetear archivo
+            close();
+            GeneralFiler.resetFile();
+            streamCreator();
+            putout.BaseStream.Seek(0, SeekOrigin.Begin);
+            putout.Write(--n);
+            putout.Write(k);
+            foreach(Product p in products)
+            {
+                long pos = 8 + (i * STREAM_SIZE);
+                putout.BaseStream.Seek(pos, SeekOrigin.Begin);
+                putout.Write(t.id);
+                putout.Write(nVarChar(t.name, 20));
+                putout.Write(t.qty);
+                putout.Write(t.price);
+                putout.Write(t.getType());
+            }
+            return true;
         }
         private bool validate(Product t)
         {
@@ -82,7 +115,7 @@ namespace InventarioApp.DataBase
             p.name = putin.ReadString().Trim();
             p.qty = putin.ReadInt32();
             p.price = putin.ReadSingle();
-            MessageBox.Show(p.price.ToString());
+            //MessageBox.Show(p.price.ToString());
             p.setType(putin.ReadInt32());
             return p;
         }
@@ -100,6 +133,7 @@ namespace InventarioApp.DataBase
                 p = QueryByID(i);
                 if (p != null)
                 {
+                    //autoborrador
                     products.Add(p);
                 }
             }

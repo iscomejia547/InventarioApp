@@ -1,4 +1,5 @@
 ﻿
+using InventarioApp.DataBase;
 using InventarioApp.POBject;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,11 @@ namespace InventarioApp.UI
     public partial class BuyDlg : Form
     {
         public bool isBuy { get; set; }
-        private Dictionary<int, Product> products;
-        public void setProducts(Dictionary<int, Product> t)
+        private ProductDB db;
+        private List<Product> products;
+        public void setDB(ProductDB t)
         {
-            products = t;
+            db= t;
         }
         public BuyDlg()
         {
@@ -29,11 +31,16 @@ namespace InventarioApp.UI
         {
             List<String> s = new List<String>();
             s.Add("Seleccione un producto");
-            foreach (KeyValuePair<int, Product> x in products)
+            products = db.readAll();
+            foreach (var x in products)
             {
-                s.Add(x.Value.idpname());
+                s.Add(x.name);
             }
             ProductCMB.DataSource = s;
+            if (!isBuy)
+            {
+                pricetxt.Enabled = false;
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -66,8 +73,7 @@ namespace InventarioApp.UI
                     break;
                 }
             }
-            var prod = (from it in products where it.Value.id == (ProductCMB.SelectedIndex - 1) select it).ToArray();
-            Product p = prod[0].Value as Product;
+            Product p = db.QueryByName(ProductCMB.SelectedItem.ToString());
             if (p != null)
             {
                 if (isBuy)
@@ -80,8 +86,17 @@ namespace InventarioApp.UI
                     p.qty -= Int32.Parse(qtytxt.Text);
                 }
             }
-            products.Remove(p.id);
-            products.Add(p.id, p);
+
+            if (db.update(p))
+            {
+                MessageBox.Show("Se actualizó correctamente");
+                this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                MessageBox.Show("Ha habido un error", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

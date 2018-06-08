@@ -29,5 +29,9 @@ namespace InventarioApp.Data
             }
             return fs;
         }
+        public static void resetFile()
+        {
+            File.Delete(PATH);
+        }
     }
 }
